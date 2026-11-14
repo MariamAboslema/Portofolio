@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Mariam Aboslema, Full-Stack Developer (MERN) based in Port Said, Egypt.">
+<style>html{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Mariam Aboslema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F2F6F6;
+  --surface: #FFFFFF;
+  --fg: #0F1C21;
+  --muted: #52646B;
+  --line: #D5E0E2;
+  --accent: #0A7C74;
+  --accent-ink: #FFFFFF;
+  --ok: #1B8A4B;
+  --chip-bg: #E6EFEF;
+  --code-bg: #0F1C21;
+  --code-fg: #D7E6E8;
+  --code-key: #7FD6CC;
+  --code-str: #F3C77B;
+  --code-dim: #7F9AA0;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1316; --surface: #111D21; --fg: #E4EFF0; --muted: #8FA5AB; --line: #223338;
+    --accent: #4FD1C5; --accent-ink: #05211E; --ok: #5BD08A; --chip-bg: #18282D;
+    --code-bg: #060C0E; --code-fg: #D7E6E8; --code-key: #7FD6CC; --code-str: #F3C77B; --code-dim: #7F9AA0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1316; --surface: #111D21; --fg: #E4EFF0; --muted: #8FA5AB; --line: #223338;
+  --accent: #4FD1C5; --accent-ink: #05211E; --ok: #5BD08A; --chip-bg: #18282D;
+  --code-bg: #060C0E; --code-fg: #D7E6E8; --code-key: #7FD6CC; --code-str: #F3C77B; --code-dim: #7F9AA0;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 24px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1060px; margin: 0 auto; display: flex; flex-direction: column; gap: 88px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+/* nav */
+.nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.mark { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+.mark b { color: var(--fg); font-weight: 500; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover { color: var(--fg); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: center; margin-top: -32px; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.hero h1 { font-size: clamp(44px, 7vw, 76px); font-weight: 700; letter-spacing: -0.03em; }
+.role { font-family: var(--font-display); font-size: clamp(20px, 2.6vw, 26px); font-weight: 500; color: var(--muted); margin-top: 10px; }
+.pitch { max-width: 52ch; margin-top: 22px; font-size: 17px; color: var(--fg); }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px;
+  font: 500 15px/1 var(--font-body); border-radius: 8px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--fg); text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.06); }
+
+.req { background: var(--code-bg); color: var(--code-fg); border-radius: 12px; border: 1px solid var(--line); overflow: hidden; min-width: 0; }
+.req-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 12px 16px; border-bottom: 1px solid rgba(127,154,160,0.25); font-family: var(--font-mono); font-size: 13px; }
+.verb { color: var(--code-key); font-weight: 500; }
+.status { margin-left: auto; color: var(--ok); }
+.req pre { margin: 0; padding: 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.75; }
+.k { color: var(--code-key); } .s { color: var(--code-str); } .d { color: var(--code-dim); }
+
+/* sections */
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin-bottom: 28px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.02em; }
+.sec-head span { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card.featured { grid-column: 1 / -1; padding: 32px; border-color: var(--accent); }
+.card-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.card-top .kind { color: var(--accent); font-weight: 500; }
+.card h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+.card.featured h3 { font-size: 32px; }
+.card .lead { color: var(--muted); max-width: 70ch; }
+.card ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+.card.featured ul { columns: 2; column-gap: 40px; display: block; }
+.card.featured li { break-inside: avoid; margin-bottom: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.chip { font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border-radius: 6px; background: var(--chip-bg); color: var(--fg); }
+
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.skill { border-top: 2px solid var(--accent); padding-top: 14px; min-width: 0; }
+.skill h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.skill .chips { margin-top: 0; padding-top: 0; }
+
+.timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.timeline li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 32px; padding: 22px 0; border-top: 1px solid var(--line); }
+.timeline li:last-child { border-bottom: 1px solid var(--line); }
+.when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); padding-top: 4px; }
+.timeline h3 { font-size: 20px; font-weight: 700; }
+.org { color: var(--muted); font-size: 15px; margin-top: 2px; }
+.timeline ul { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; font-size: 15px; }
+
+.certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cert { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.cert h3 { font-size: 17px; font-weight: 700; }
+.cert .meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.cert p { font-size: 14.5px; color: var(--muted); margin-top: 8px; }
+
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(24px, 5vw, 48px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.contact h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 700; letter-spacing: -0.02em; }
+.contact p { color: var(--muted); margin-top: 12px; max-width: 46ch; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.email { font-family: var(--font-mono); font-size: 15px; overflow-wrap: anywhere; user-select: all; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+footer { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 36px; margin-top: 0; }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .wrap { gap: 64px; }
+  .projects, .certs { grid-template-columns: minmax(0, 1fr); }
+  .card.featured { padding: 24px; }
+  .card.featured ul { columns: 1; }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); }
+  .status { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.card-links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14.5px; font-weight: 500; }
+.cert-link { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 500; }
+
+/* motion: base pieces (safe without animation) */
+.hero { position: relative; isolation: isolate; overflow-x: clip; }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; width: min(540px, 85vw); aspect-ratio: 1; right: -6%; top: 50%;
+  transform: translateY(-50%); background: radial-gradient(circle, var(--accent), transparent 68%);
+  opacity: 0.17; filter: blur(30px); pointer-events: none;
+}
+.w { display: inline-block; white-space: nowrap; }
+.ln { display: block; }
+.prog {
+  position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; background: var(--accent);
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0)); z-index: 20; pointer-events: none;
+}
+.req { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 0.2s ease-out; }
+.status::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 8px; }
+.nav a { background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 1px no-repeat; padding-bottom: 3px; transition: background-size 0.25s ease, color 0.2s ease; }
+.nav a:hover { background-size: 100% 1px; }
+.btn { transition: border-color 0.2s ease, filter 0.2s ease, transform 0.2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary::after { content: "\2192"; display: inline-block; transition: transform 0.2s ease; }
+.btn.primary:hover::after { transform: translateX(4px); }
+.chip { transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease; }
+.chip:hover { background: var(--accent); color: var(--accent-ink); transform: translateY(-2px); }
+.card { transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+.cert { transition: transform 0.25s ease, border-color 0.25s ease; }
+.rv { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0ms); }
+.rv.in { opacity: 1; transform: none; }
+.rv.done { transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; transition-delay: 0ms; }
+.card:hover { border-color: var(--accent); box-shadow: 0 16px 36px -20px rgba(0, 0, 0, 0.3); transform: translateY(-4px); }
+.cert:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes up { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes charIn { from { opacity: 0; transform: translateY(60%) rotate(4deg); } }
+  @keyframes lineIn { from { opacity: 0; transform: translateX(-10px); } }
+  @keyframes reqIn { from { opacity: 0; transform: perspective(1000px) translateY(36px) rotateX(10deg); } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.7); } }
+  @keyframes statusIn { from { opacity: 0; transform: scale(0.8); } }
+  @keyframes blink { 50% { opacity: 0.3; } }
+  @keyframes drift { from { transform: translate(0, -50%) scale(1); } to { transform: translate(-50px, -44%) scale(1.18); } }
+  .nav { animation: up 0.6s ease backwards; }
+  .eyebrow { animation: up 0.7s ease 0.05s backwards; }
+  .role { animation: up 0.7s ease 0.55s backwards; }
+  .pitch { animation: up 0.7s ease 0.7s backwards; }
+  .cta { animation: up 0.7s ease 0.85s backwards; }
+  .hero h1 .c { display: inline-block; animation: charIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+  .hero::before { animation: drift 14s ease-in-out infinite alternate; }
+  .req { animation: reqIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s backwards; }
+  .ln { animation: lineIn 0.45s ease backwards; animation-delay: calc(0.9s + var(--i, 0) * 110ms); }
+  .status { animation: statusIn 0.5s ease 0.85s backwards; }
+  .status::before { animation: blink 2s ease-in-out infinite; }
+  .skill.in .chip { animation: pop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.3) backwards; animation-delay: calc(var(--ci, 0) * 45ms + 150ms); }
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<div class="wrap">
+  <nav class="nav" aria-label="Sections">
+    <div class="mark"><b>mariam</b>.dev</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Port Said, Egypt</p>
+      <h1>Mariam Aboslema</h1>
+      <p class="role">Full-Stack Developer (MERN)</p>
+      <p class="pitch">I build REST APIs and React front ends, from the database schema to a live deployment on Vercel. I finished the 5-month MERN program at ITI in 2026 and I'm looking for a Junior MERN Stack Developer role where I can write clean, maintainable code in a team.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/MariamAboslema" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/mariam-aboslema-a73aa4276/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="req" role="img" aria-label="Example API response describing Mariam Aboslema">
+      <div class="req-bar"><span class="verb">GET</span><span>/mariam</span><span class="status">200 OK</span></div>
+<pre><span class="d">{</span>
+  <span class="k">"name"</span><span class="d">:</span> <span class="s">"Mariam Aboslema"</span><span class="d">,</span>
+  <span class="k">"role"</span><span class="d">:</span> <span class="s">"Full-Stack Developer"</span><span class="d">,</span>
+  <span class="k">"stack"</span><span class="d">:</span> <span class="d">[</span><span class="s">"MongoDB"</span><span class="d">,</span> <span class="s">"Express"</span><span class="d">,</span>
+            <span class="s">"React"</span><span class="d">,</span> <span class="s">"Node.js"</span><span class="d">],</span>
+  <span class="k">"training"</span><span class="d">:</span> <span class="s">"ITI MERN, 5 months"</span><span class="d">,</span>
+  <span class="k">"deployed"</span><span class="d">:</span> <span class="s">"5+ projects on Vercel"</span><span class="d">,</span>
+  <span class="k">"degree"</span><span class="d">:</span> <span class="s">"B.Eng. Computer and Control"</span><span class="d">,</span>
+  <span class="k">"languages"</span><span class="d">:</span> <span class="d">[</span><span class="s">"Arabic"</span><span class="d">,</span> <span class="s">"English"</span><span class="d">],</span>
+<span class="d">}</span></pre>
+    </div>
+  </header>
+
+  <section id="projects" aria-labelledby="projects-h">
+    <div class="sec-head"><h2 id="projects-h">Projects</h2><span>5 projects, from REST APIs to a mobile app</span></div>
+    <div class="projects">
+
+      <article class="card featured">
+        <div class="card-top"><span class="kind">REST API · ITI graduation project</span><span>Jun 2026</span></div>
+        <h3>Bazaary</h3>
+        <p class="lead">A multi-tenant API for a live shopping bazaar platform that handles brands, customers, orders, payments and live events.</p>
+        <ul>
+          <li>JWT authentication with refresh tokens, password hashing and role-based access control.</li>
+          <li>Live shopping, product management and order processing for both signed-in and guest users.</li>
+          <li>Stripe for online payments, ImageKit for images, and the Groq API for AI shopping assistance and business insights.</li>
+          <li>MVC architecture, Joi validation and centralized error handling, deployed on Vercel with MongoDB Atlas.</li>
+        </ul>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">JWT</span><span class="chip">Stripe</span><span class="chip">ImageKit</span><span class="chip">Groq API</span><span class="chip">Vercel</span></div>
+        <div class="card-links"><a href="https://github.com/Maram-ghozal/Bazary_Backend" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="kind">REST API</span><span>Apr 2026</span></div>
+        <h3>Blog Application API</h3>
+        <p class="lead">A full-featured blog platform with authentication, authorization, media upload and Facebook-style group management.</p>
+        <ul>
+          <li>Protected over 15 endpoints with JWT authentication and role-based authorization.</li>
+          <li>Built a Multer and ImageKit upload pipeline for profile images and post attachments.</li>
+        </ul>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">Mongoose</span><span class="chip">JWT</span><span class="chip">bcrypt</span><span class="chip">Multer</span><span class="chip">Joi</span></div>
+        <div class="card-links"><a href="https://github.com/MariamAboslema/blog-application-backend-project-iti" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="kind">Full-stack web app</span><span>Mar 2026</span></div>
+        <h3>E-Commerce Web Application</h3>
+        <p class="lead">Product browsing, a shopping cart with real-time updates, user registration and form validation.</p>
+        <ul>
+          <li>Managed global state across 5+ components with Redux Toolkit.</li>
+          <li>Cut form error-handling code by about 40% using Formik and Yup.</li>
+        </ul>
+        <div class="chips"><span class="chip">React</span><span class="chip">Redux Toolkit</span><span class="chip">React Router</span><span class="chip">Tailwind CSS</span><span class="chip">Formik</span><span class="chip">Yup</span><span class="chip">Axios</span><span class="chip">Vite</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="kind">Front-end app</span><span>Mar 2026</span></div>
+        <h3>Examination System</h3>
+        <p class="lead">A quiz platform with timed exams, randomized questions, progress tracking and a detailed score breakdown.</p>
+        <ul>
+          <li>Built a configurable countdown timer and a randomized question engine that supports over 50 questions per exam.</li>
+          <li>Designed a per-question feedback page to help learners review their mistakes.</li>
+        </ul>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span><span class="chip">localStorage</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="kind">Mobile app · ITIDA-funded</span><span>Jul 2025</span></div>
+        <h3>ATM Radar</h3>
+        <p class="lead">A smart ATM locator with live location tracking, interactive maps, ATM status updates, push notifications and Arabic and English support. Graduation project, graded Excellent.</p>
+        <ul>
+          <li>Secured an ITIDA government grant with the project proposal.</li>
+          <li>Developed and led the AI/ML feedback analysis module for multilingual users across Egypt.</li>
+        </ul>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">AI/ML</span></div>
+        <div class="card-links"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7350597414065438720/" target="_blank" rel="noopener">See the LinkedIn post</a></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="sec-head"><h2 id="skills-h">Skills</h2><span>the stack I use day to day</span></div>
+    <div class="skills">
+      <div class="skill"><h3>Front-End</h3><div class="chips"><span class="chip">React.js</span><span class="chip">Redux Toolkit</span><span class="chip">JavaScript ES6+</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Bootstrap</span><span class="chip">Tailwind CSS</span><span class="chip">Formik</span><span class="chip">Yup</span><span class="chip">Axios</span><span class="chip">Vite</span></div></div>
+      <div class="skill"><h3>Back-End</h3><div class="chips"><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">Mongoose</span><span class="chip">RESTful APIs</span><span class="chip">JWT</span><span class="chip">bcrypt</span><span class="chip">Multer</span><span class="chip">ImageKit</span><span class="chip">Joi</span></div></div>
+      <div class="skill"><h3>Tools &amp; DevOps</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Postman</span><span class="chip">Vercel CI/CD</span></div></div>
+      <div class="skill"><h3>AI Tools</h3><div class="chips"><span class="chip">ChatGPT</span><span class="chip">GitHub Copilot</span><span class="chip">AI-assisted development</span><span class="chip">Prompt engineering</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="sec-head"><h2 id="exp-h">Experience and education</h2></div>
+    <ol class="timeline">
+      <li>
+        <div class="when">Sep 2026</div>
+        <div>
+          <h3>Specialized Teacher</h3>
+          <p class="org">WE Applied Technology Schools, Port Said</p>
+          <ul>
+            <li>Teach Web Programming (HTML, CSS and JavaScript) to 2nd-year students and Computer Fundamentals to 1st-year students.</li>
+            <li>Manage 2 classes of 22 students each, preparing lessons and guiding hands-on exercises.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Jan 2026 – May 2026</div>
+        <div>
+          <h3>Full-Stack Web Development Trainee (MERN)</h3>
+          <p class="org">Information Technology Institute (ITI), Port Said branch</p>
+          <ul>
+            <li>Completed an intensive 5-month MERN program and deployed 5+ full-stack projects to Vercel production.</li>
+            <li>Built REST APIs with JWT authentication, role-based access control and Stripe payment integration.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Oct 2020 – Jul 2025</div>
+        <div>
+          <h3>B.Eng. Computer and Control</h3>
+          <p class="org">Port Said University</p>
+          <ul><li>Graduated Very Good with Honors (80.94%).</li></ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="cert-h">
+    <div class="sec-head"><h2 id="cert-h">Certifications and training</h2></div>
+    <div class="certs">
+      <div class="cert"><h3>Artificial Intelligence, 72 hrs</h3><div class="meta">ITI · Jul–Aug 2024</div><p>Machine learning, neural networks, deep learning and data science.</p><a class="cert-link" href="https://drive.google.com/file/d/1xnXX4JmlBxIy61vTDorh02ZPYdgzKBzc/view" target="_blank" rel="noopener">View certificate</a></div>
+      <div class="cert"><h3>.NET Web Development, 150 hrs</h3><div class="meta">ITI · Jul–Aug 2023</div><p>SQL Server, Visual C#, ASP.NET Core and Entity Framework.</p><a class="cert-link" href="https://drive.google.com/file/d/1ar2XHztmJoI3DVo01tnvj50Cl2RxBmmd/view?usp=drivesdk" target="_blank" rel="noopener">View certificate</a></div>
+      <div class="cert"><h3>ICDL Certificate (New ICDL)</h3><div class="meta">ICDL Arabia · Aug 2025</div><p>Office essentials, Cyber Security v2.0, and computer and online essentials.</p><a class="cert-link" href="https://drive.google.com/file/d/16nVowWSp8A2wrzO8dFsKJXJo5K88utxQ/view" target="_blank" rel="noopener">View certificate</a></div>
+      <div class="cert"><h3>Employability Skills Track</h3><div class="meta">Aspire / USAID · Jul–Aug 2024</div><a class="cert-link" href="https://drive.google.com/file/d/1qnT2Dz58kt1jRTjXQ7PjOq_lFX7lVMH0/view" target="_blank" rel="noopener">View certificate</a></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div>
+      <h2 id="contact-h">Let's work together</h2>
+      <p>I'm open to Junior MERN Stack Developer roles. Send me an email or find me on GitHub and LinkedIn.</p>
+    </div>
+    <div>
+      <div class="email-row">
+        <span class="email" id="email">mariamaboslema8@gmail.com</span>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://github.com/MariamAboslema" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/mariam-aboslema-a73aa4276/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>Mariam Aboslema · Port Said, Egypt</footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var emailEl = document.getElementById('email');
+  function select() {
+    try {
+      var r = document.createRange(); r.selectNodeContents(emailEl);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    var text = emailEl.textContent.trim();
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { select(); btn.textContent = 'Press copy now'; });
+    } catch (e) { select(); btn.textContent = 'Press copy now'; }
+  });
+})();
+</script>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress bar */
+  var prog = document.getElementById('prog');
+  var ticking = false;
+  function updateProg() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    prog.style.setProperty('--p', p.toFixed(4));
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateProg); }
+  }, { passive: true });
+  updateProg();
+
+  /* skill chips get an index for the stagger */
+  [].forEach.call(document.querySelectorAll('.skill'), function (s) {
+    [].forEach.call(s.querySelectorAll('.chip'), function (c, i) { c.style.setProperty('--ci', i); });
+  });
+
+  var targets = [].slice.call(document.querySelectorAll('.sec-head, .card, .skill, .timeline li, .cert, .contact'));
+
+  if (reduce) {
+    targets.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+
+  /* hero name: letters rise in one by one */
+  var h1 = document.querySelector('.hero h1');
+  if (h1) {
+    var text = h1.textContent;
+    h1.setAttribute('aria-label', text);
+    h1.textContent = '';
+    var n = 0;
+    text.split(' ').forEach(function (word, wi) {
+      var w = document.createElement('span');
+      w.className = 'w';
+      w.setAttribute('aria-hidden', 'true');
+      word.split('').forEach(function (ch) {
+        var c = document.createElement('span');
+        c.className = 'c';
+        c.textContent = ch;
+        c.style.animationDelay = (150 + n * 40) + 'ms';
+        n++;
+        w.appendChild(c);
+      });
+      if (wi > 0) h1.appendChild(document.createTextNode(' '));
+      h1.appendChild(w);
+    });
+  }
+
+  /* API response: lines appear one after another */
+  var pre = document.querySelector('.req pre');
+  if (pre) {
+    pre.innerHTML = pre.innerHTML.split('\n').map(function (l, i) {
+      return '<span class="ln" style="--i:' + i + '">' + l + '</span>';
+    }).join('');
+  }
+
+  /* card tilt that follows the pointer (mouse devices only) */
+  var req = document.querySelector('.req');
+  var hero = document.querySelector('.hero');
+  if (req && hero && window.matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = req.getBoundingClientRect();
+      var x = (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2);
+      var y = (e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2);
+      x = Math.max(-1, Math.min(1, x));
+      y = Math.max(-1, Math.min(1, y));
+      req.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+      req.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
+    });
+    hero.addEventListener('pointerleave', function () {
+      req.style.setProperty('--ry', '0deg');
+      req.style.setProperty('--rx', '0deg');
+    });
+  }
+
+  /* reveal on scroll; anything already on screen is shown right away */
+  function finish(el) { el.classList.add('in'); setTimeout(function () { el.classList.add('done'); }, 1000); }
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { io.unobserve(en.target); finish(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  targets.forEach(function (el) {
+    var idx = [].indexOf.call(el.parentNode.children, el);
+    el.style.setProperty('--d', (Math.min(idx, 4) * 90) + 'ms');
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      el.classList.add('rv');
+      io.observe(el);
+    }
+  });
+})();
+</script>
+</body>
+</html>
